@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machine Coding Interaction #02 — Typeahead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="page-header">
+      <h1>
+        <a href="https://github.com/deyRupak/machine-coding-interations">Machine Coding Interaction</a> #02 — Typeahead
+    </h1>
+      <p>Slow requests can resolve <em>after</em> fast ones. Flip the guard off and watch a stale response silently overwrite the correct results.</p>
+    </header>
+
+    <div class="controls-row">
+      <button class="switch" id="guardToggle" role="switch" aria-checked="true" aria-labelledby="guardLabel">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+      </button>
+      <span id="guardLabel" class="switch-label">
+        <strong>Race condition guard</strong>
+        <span class="switch-state" id="guardState">ON — requests are cancelled and stale responses ignored</span>
+      </span>
+    </div>
+
+    <div class="stage-grid">
+
+      <section class="panel search-panel">
+        <div class="panel-title">Search dev tools</div>
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Try typing “re” then quickly “react”…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="spinner" id="spinner" hidden></span>
+        </div>
+
+        <div class="results-wrap" id="resultsWrap">
+          <div class="hint-state" id="hintState">Results simulate a real network — 300–1800ms latency per request, occasionally out of order.</div>
+        </div>
+      </section>
+
+      <section class="panel timeline-panel">
+        <div class="panel-title">
+          Request timeline
+          <span class="panel-subtitle">what's actually happening under the hood</span>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="timeline-empty" id="timelineEmpty">No requests yet — start typing.</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

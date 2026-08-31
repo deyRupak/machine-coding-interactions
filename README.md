@@ -15,6 +15,7 @@ The goal isn't a full app. It's isolating the one part of each interaction that'
 | # | Interaction | The hard part isn't X — it's Y | Demo | Code |
 |---|---|---|---|---|
 | 01 | Command Palette | Filtering the list — it's keyboard semantics: `aria-activedescendant`, scroll-into-view, and focus restoration | [Live](https://deyrupak.github.io/machine-coding-interactions/01-command-palette/) | [Folder](./01-command-palette) |
+| 02 | Typeahead | Debouncing — it's cancelling in-flight requests and guarding against out-of-order responses | [Live](https://deyrupak.github.io/machine-coding-interactions/02-typeahead/) | [Folder](./02-typeahead) |
 
 More entries land here as they're built: drag & drop, typeahead with request cancellation, undo/redo, resizable panels, virtualized lists, and more from the same series.
 
