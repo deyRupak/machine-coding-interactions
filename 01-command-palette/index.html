@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Coding Interaction #01 — Command Palette</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="brand">
+            <span class="brand-mark"></span>
+            <a href="https://github.com/deyRupak/machine-coding-interations">/machine-coding-interactions</a>
+        </div>
+        <button class="trigger" id="trigger" aria-haspopup="dialog">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.3-4.3" />
+            </svg>
+            Search or jump to…
+            <span class="kbd-group"><kbd>⌘</kbd><kbd>K</kbd></span>
+        </button>
+    </div>
+
+    <div class="stage">
+        <h1>Machine Coding Interaction #01 Command Palette</h1>
+        <p>Filtering the list is the easy part. The interesting problem is keeping the input focused while a virtual
+            selection moves through the results & putting focus back exactly where it started.</p>
+        <div class="stage-hint">
+            Press <kbd>⌘</kbd><kbd>K</kbd> (or <kbd>Ctrl</kbd><kbd>K</kbd>) to open
+        </div>
+    </div>
+
+    <div class="backdrop" id="backdrop">
+        <div class="palette" role="dialog" aria-modal="true" aria-label="Command palette">
+            <div class="palette-input-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M21 21l-4.3-4.3" />
+                </svg>
+                <input id="paletteInput" type="text" placeholder="Type a command or search…" autocomplete="off"
+                    spellcheck="false" role="combobox" aria-expanded="true" aria-controls="paletteListbox"
+                    aria-activedescendant="" />
+                <span class="esc-hint">ESC</span>
+            </div>
+            <div class="palette-list" id="paletteListbox" role="listbox"></div>
+            <div class="palette-footer">
+                <span class="hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+                <span class="hint"><kbd>↵</kbd> select</span>
+                <span class="hint"><kbd>esc</kbd> close</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="toast-dot"></span>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
