@@ -2,6 +2,7 @@
 
 **[Live demo](https://deyRupak.github.io/machine-coding-interactions/01-command-palette/)** · Standalone HTML/CSS/JS, no build step, no dependencies.
 
+![screenshot_#01](image.png)
 ---
 
 > Machine Coding Interaction #01
