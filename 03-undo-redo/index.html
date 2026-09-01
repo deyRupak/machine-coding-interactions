@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machine Coding Interaction #03 — Undo/Redo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+    <header class="page-header">
+      <h1>
+        <a href="https://github.com/deyRupak/machine-coding-interations">Machine Coding Interaction</a> #03 — Undo/Redo</h1>
+      <p>
+        Deleting looks instant. It isn't — the item just leaves the list. 
+        The real removal is delayed until the undo window closes, and <kbd>⌘Z</kbd> (or <kbd>Ctrl</kbd> <kbd>Z</kbd>) 
+        restores it to the <em>exact</em> spot it came from.
+    </p>
+    </header>
+
+    <div class="stage-grid">
+
+      <section class="panel inbox-panel">
+        <div class="panel-title">
+          Inbox
+          <span class="panel-subtitle" id="itemCount"></span>
+        </div>
+        <div class="inbox-list" id="inboxList"></div>
+      </section>
+
+      <section class="panel log-panel">
+        <div class="panel-title">
+          Activity log
+          <span class="panel-subtitle">what's actually happening under the hood</span>
+        </div>
+        <div class="log" id="log">
+          <div class="log-empty" id="logEmpty">Delete something to see it here.</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
