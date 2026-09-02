@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Coding Interaction #04 — Virtualized List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <header class="page-header">
+            <h1>
+                <a href="https://github.com/deyRupak/machine-coding-interations">Machine Coding Interaction</a> #04 — Virtualized List
+            </h1>
+            <p>10,000 log rows, variable heights. The DOM only ever holds a handful of them — <em>where</em> exactly is
+                the hard part, not how many.</p>
+        </header>
+
+        <div class="controls-row">
+            <button class="switch" id="virtToggle" role="switch" aria-checked="true" aria-labelledby="virtLabel">
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+            </button>
+            <span id="virtLabel" class="switch-label">
+                <strong>Virtualization</strong>
+                <span class="switch-state" id="virtState">ON — only rows near the viewport exist in the DOM</span>
+            </span>
+
+            <div class="jump-group">
+                <label for="jumpInput">Jump to row</label>
+                <input id="jumpInput" type="number" min="1" max="10000" placeholder="1–10000" />
+                <button id="jumpBtn" class="jump-btn">Go</button>
+            </div>
+        </div>
+
+        <div class="stats-row" id="statsRow">
+            <span><strong id="statNodes">—</strong> DOM row nodes</span>
+            <span><strong id="statTime">—</strong> last render</span>
+            <span><strong id="statTotal">10,000</strong> total rows</span>
+        </div>
+
+        <section class="panel list-panel">
+            <div class="viewport" id="viewport">
+                <div class="spacer" id="spacer"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
