@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Coding Interaction #05 — Combobox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <header class="page-header">
+            <h1>Machine Coding Interaction #05 — Combobox</h1>
+            <p>Arrow keys write a suggestion into the input without committing it. <em>Escape</em> has to undo exactly
+                that — back to what you typed, not an empty box.</p>
+        </header>
+
+        <div class="stage-grid">
+
+            <section class="panel combobox-panel">
+                <div class="panel-title">Assign to</div>
+
+                <div class="combobox-wrap">
+                    <div class="combobox-field">
+                        <input id="comboInput" type="text" role="combobox" aria-autocomplete="both"
+                            aria-expanded="false" aria-controls="comboListbox" aria-activedescendant=""
+                            placeholder="Type a name…" autocomplete="off" spellcheck="false" />
+                        <span class="state-badge" id="stateBadge">typing</span>
+                    </div>
+                    <ul class="listbox" id="comboListbox" role="listbox" hidden></ul>
+                </div>
+
+                <p class="combobox-hint">Try: type "m", press <kbd>↓</kbd> twice, then <kbd>Esc</kbd> — you'll land back
+                    on exactly "m", not a cleared field.</p>
+            </section>
+
+            <section class="panel log-panel">
+                <div class="panel-title">
+                    Interaction log
+                    <span class="panel-subtitle">state transitions as they happen</span>
+                </div>
+                <div class="log" id="log">
+                    <div class="log-empty" id="logEmpty">Start typing to see state changes here.</div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
