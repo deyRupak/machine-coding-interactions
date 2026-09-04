@@ -19,6 +19,7 @@ The goal isn't a full app. It's isolating the one part of each interaction that'
 | 03 | Undo/Redo (Optimistic Delete) | The "Undo" toast — it's delaying the real mutation until the undo window closes | [Live](https://deyrupak.github.io/machine-coding-interactions/03-undo-redo/) | [Folder](./03-undo-redo) |
 | 04 | Virtualized List | Rendering fewer DOM nodes — it's keeping scroll position, scrollbar size, and jump-to-row math correct with variable row heights | [Live](https://deyrupak.github.io/machine-coding-interactions/04-virtualized-list/) | [Folder](./04-virtualized-list) |
 | 05 | Combobox | Filtering — it's keeping "previewing" and "committed" as genuinely different states | [Live](https://deyrupak.github.io/machine-coding-interactions/05-combobox/) | [Folder](./05-combobox) |
+| 06 | Resizable Panels | `mousemove` — it's `setPointerCapture`, and clamping to min/max without disturbing the panel you're not touching | [Live](https://deyrupak.github.io/machine-coding-interactions/06-resizable-panels/) | [Folder](./06-resizable-panels) |
 
 More entries land here as they're built: drag & drop, typeahead with request cancellation, undo/redo, resizable panels, virtualized lists, and more from the same series.
 

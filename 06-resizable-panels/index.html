@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Coding Interaction #06 — Resizable Panels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+        <header class="page-header">
+            <h1>
+                <a href="https://github.com/deyRupak/machine-coding-interations">Machine Coding Interaction</a> #06 — Resizable Panels
+            </h1>
+            <p>Drag a divider — it only ever affects its two immediate neighbors. Try dragging past a limit, or
+                double-click a divider to reset.</p>
+        </header>
+
+        <div class="panels-shell" id="shell">
+
+            <section class="panel files-panel" id="filesPanel" style="flex-basis:220px">
+                <div class="panel-header">
+                    <span>Files</span>
+                    <span class="width-readout" id="filesWidthReadout">220px</span>
+                </div>
+                <div class="file-tree">
+                    <div class="file-row folder">src</div>
+                    <div class="file-row file indent">index.html</div>
+                    <div class="file-row file indent">style.css</div>
+                    <div class="file-row file indent active">script.js</div>
+                    <div class="file-row folder">components</div>
+                    <div class="file-row file indent">Panel.jsx</div>
+                    <div class="file-row file indent">Divider.jsx</div>
+                    <div class="file-row folder">tests</div>
+                    <div class="file-row file indent">panel.test.js</div>
+                    <div class="file-row file">README.md</div>
+                    <div class="file-row file">package.json</div>
+                </div>
+            </section>
+
+            <div class="divider" id="dividerFiles" role="separator" aria-orientation="vertical"
+                aria-label="Resize Files panel" tabindex="0"><span class="divider-line"></span></div>
+
+            <section class="panel editor-panel" id="editorPanel">
+                <div class="panel-header">
+                    <span>Editor</span>
+                    <span class="width-readout" id="editorWidthReadout">—</span>
+                </div>
+                <div class="editor-body">
+                    <pre
+                        class="code-block"><span class="ln">1</span><span class="tok-kw">function</span> <span class="tok-fn">resize</span>(<span class="tok-var">panel</span>, <span class="tok-var">delta</span>) {
+<span class="ln">2</span>  <span class="tok-kw">const</span> next = <span class="tok-var">panel</span>.width + delta
+<span class="ln">3</span>  <span class="tok-kw">return</span> <span class="tok-fn">clamp</span>(next, <span class="tok-var">panel</span>.min, <span class="tok-var">panel</span>.max)
+<span class="ln">4</span>}
+<span class="ln">5</span>
+<span class="ln">6</span><span class="tok-comment">// only the two panels adjacent to</span>
+<span class="ln">7</span><span class="tok-comment">// the dragged divider are affected</span>
+<span class="ln">8</span><span class="tok-kw">divider</span>.<span class="tok-fn">setPointerCapture</span>(<span class="tok-var">e</span>.pointerId)</pre>
+                </div>
+            </section>
+
+            <div class="divider" id="dividerInspector" role="separator" aria-orientation="vertical"
+                aria-label="Resize Inspector panel" tabindex="0"><span class="divider-line"></span></div>
+
+            <section class="panel inspector-panel" id="inspectorPanel" style="flex-basis:280px">
+                <div class="panel-header">
+                    <span>Inspector</span>
+                    <span class="width-readout" id="inspectorWidthReadout">280px</span>
+                </div>
+                <div class="props-list">
+                    <div class="prop-row"><span class="prop-key">display</span><span class="prop-val">flex</span></div>
+                    <div class="prop-row"><span class="prop-key">flex-basis</span><span class="prop-val">220px</span>
+                    </div>
+                    <div class="prop-row"><span class="prop-key">min-width</span><span class="prop-val">160px</span>
+                    </div>
+                    <div class="prop-row"><span class="prop-key">max-width</span><span class="prop-val">320px</span>
+                    </div>
+                    <div class="prop-row"><span class="prop-key">overflow</span><span class="prop-val">hidden</span>
+                    </div>
+                    <div class="prop-row"><span class="prop-key">border-color</span><span
+                            class="prop-val">#23252f</span></div>
+                </div>
+            </section>
+
+        </div>
+
+        <p class="hint">Keyboard: focus a divider, use <kbd>←</kbd><kbd>→</kbd> to resize,
+            <kbd>Home</kbd>/<kbd>End</kbd> for min/max. Double-click a divider to reset.</p>
+    </div>
+
+    <div class="drag-badge" id="dragBadge" hidden></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

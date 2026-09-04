@@ -1,0 +1,306 @@
+:root {
+    --bg-page: #0b0c10;
+    --bg-grid: rgba(255, 255, 255, 0.035);
+    --surface: #16171d;
+    --surface-2: #1e2029;
+    --surface-hover: #23252f;
+    --border: rgba(255, 255, 255, 0.09);
+    --border-soft: rgba(255, 255, 255, 0.06);
+    --text-primary: #ededf0;
+    --text-secondary: #8b8c96;
+    --text-tertiary: #5c5d68;
+    --accent: #e8a13d;
+    --accent-soft: rgba(232, 161, 61, 0.16);
+    --accent-text: #f4c37a;
+    --info: #6ea3e0;
+    --success: #5cc98c;
+    --stale: #8b7fd6;
+    --radius-lg: 14px;
+    --radius-md: 8px;
+    --radius-sm: 5px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background:
+        radial-gradient(circle at 1px 1px, var(--bg-grid) 1px, transparent 0) 0 0 / 28px 28px,
+        var(--bg-page);
+    color: var(--text-primary);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100%;
+}
+
+body.resizing {
+    cursor: col-resize !important;
+    user-select: none;
+}
+
+.page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 56px 24px 60px;
+}
+
+.page-header h1 {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+}
+
+.page-header p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 640px;
+}
+
+kbd {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    color: var(--text-secondary);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.hint {
+    margin: 14px 2px 0;
+    font-size: 12.5px;
+    color: var(--text-tertiary);
+    line-height: 1.7;
+}
+
+/* ---------- Shell ---------- */
+
+.panels-shell {
+    display: flex;
+    height: 460px;
+    margin-top: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.editor-panel {
+    flex: 1 1 auto;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-soft);
+    flex-shrink: 0;
+}
+
+.width-readout {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+}
+
+/* ---------- Divider ---------- */
+
+.divider {
+    flex: 0 0 9px;
+    width: 9px;
+    cursor: col-resize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    touch-action: none;
+}
+
+.divider-line {
+    width: 1px;
+    height: 100%;
+    background: var(--border);
+    transition: background 0.12s var(--ease);
+}
+
+.divider:hover .divider-line,
+.divider:focus-visible .divider-line,
+.divider.active .divider-line {
+    background: var(--accent);
+    width: 2px;
+}
+
+.divider:focus-visible {
+    outline: none;
+}
+
+.divider:focus-visible .divider-line {
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ---------- Files panel: fake file tree ---------- */
+
+.file-tree {
+    padding: 8px 6px;
+    overflow-y: auto;
+    font-size: 13px;
+}
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.file-row.folder {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.file-row.folder::before {
+    content: "▸";
+    font-size: 9px;
+    color: var(--text-tertiary);
+}
+
+.file-row.file::before {
+    content: "·";
+    color: var(--text-tertiary);
+    width: 8px;
+    text-align: center;
+}
+
+.file-row.indent {
+    padding-left: 22px;
+}
+
+.file-row.active {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+}
+
+/* ---------- Editor panel: fake code block ---------- */
+
+.editor-body {
+    flex: 1;
+    overflow: auto;
+    padding: 14px 0;
+}
+
+.code-block {
+    margin: 0;
+    padding: 0 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: var(--text-primary);
+    white-space: pre;
+}
+
+.ln {
+    display: inline-block;
+    width: 22px;
+    color: var(--text-tertiary);
+    user-select: none;
+}
+
+.tok-kw {
+    color: var(--stale);
+}
+
+.tok-fn {
+    color: var(--info);
+}
+
+.tok-var {
+    color: var(--accent-text);
+}
+
+.tok-comment {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* ---------- Inspector panel: fake props list ---------- */
+
+.props-list {
+    padding: 10px 14px;
+    overflow-y: auto;
+}
+
+.prop-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 12.5px;
+}
+
+.prop-key {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--text-tertiary);
+}
+
+.prop-val {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--accent-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------- Drag badge ---------- */
+
+.drag-badge {
+    position: fixed;
+    z-index: 300;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    transform: translate(12px, -14px);
+}
+
+.drag-badge[hidden] {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .panels-shell {
+        height: 560px;
+    }
+}
